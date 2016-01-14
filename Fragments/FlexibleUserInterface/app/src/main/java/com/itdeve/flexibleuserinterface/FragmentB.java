@@ -1,21 +1,22 @@
 package com.itdeve.flexibleuserinterface;
 
 
-
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
- *
  */
 public class FragmentB extends Fragment {
 
-
+TextView text;
     public FragmentB() {
         // Required empty public constructor
     }
@@ -28,4 +29,14 @@ public class FragmentB extends Fragment {
         return inflater.inflate(R.layout.fragment_b, container, false);
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    text = (TextView) getActivity().findViewById(R.id.TextView);
+    }
+    public void  changeData(int i ){
+        Resources res = getResources();
+        String Desc[] = res.getStringArray(R.array.description);
+        text.setText(Desc[i]);
+    }
 }

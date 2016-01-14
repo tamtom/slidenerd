@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Flexible User Interface</string>
+<string-array name="titles">
+    <item>Activities</item>
+    <item>Services</item>
+    <item>Content Providers</item>
+    <item>Intents and Filters</item>
+
+</string-array>
+    <string-array name="description">
+    <item>An Activity is an application component that provides a screen with which users can interact in order to do something, such as dial the phone, take a photo, send an email, or view a map</item>
+    <item>A Service is an application component that can perform long-running operations in the background and does not provide a user interface. Another application component can start a service and it will continue to run in the background even if the user switches to another application.</item>
+    <item>ontent providers manage access to a structured set of data. They encapsulate the data, and provide mechanisms for defining data security</item>
+    <item>An Intent is a messaging object you can use to request an action from another app component. Although intents facilitate communication between components in several ways,</item>
+
+</string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
