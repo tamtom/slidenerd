@@ -1,2 +1,2 @@
 # slidenerd
-this is a repository to for slidenerd example that Vivs was showing on its tutorial 
+this is a repository for slidenerd examples that Vivs was showing on its tutorial 
