@@ -17,6 +17,6 @@ public class MainActivity extends AppCompatActivity implements Communicator {
     public void respond(int i) {
         FragmentManager manager = getFragmentManager();
         FragmentB f2 = (FragmentB) manager.findFragmentById(R.id.fragment2);
-        f2.changeData(i);
+        f2.setId(i);
     }
 }

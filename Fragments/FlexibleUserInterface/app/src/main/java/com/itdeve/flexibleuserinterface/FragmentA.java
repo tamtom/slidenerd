@@ -18,6 +18,7 @@ import android.widget.ListView;
 public class FragmentA extends Fragment implements AdapterView.OnItemClickListener{
 
 ListView listView;
+
     Communicator communicator;
     public FragmentA() {
         // Required empty public constructor
@@ -30,6 +31,7 @@ ListView listView;
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_a, container, false);
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
