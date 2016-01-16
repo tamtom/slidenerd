@@ -1,9 +1,9 @@
 package com.itdeve.flexibleuserinterface;
 
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +18,15 @@ import android.widget.ListView;
 public class FragmentA extends Fragment implements AdapterView.OnItemClickListener{
 
 ListView listView;
-
     Communicator communicator;
+
     public FragmentA() {
         // Required empty public constructor
     }
 
+    public void setCommunicator(Communicator communicator) {
+        this.communicator = communicator;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,14 +35,13 @@ ListView listView;
         return inflater.inflate(R.layout.fragment_a, container, false);
     }
 
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-    communicator  = (Communicator) getActivity();
+
         listView = (ListView) getActivity().findViewById(R.id.listView)
-    ;
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(),R.array.titles,android.R.layout.simple_list_item_1);
+        ;
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.titles, android.R.layout.simple_list_item_1);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
     }
@@ -47,5 +49,9 @@ ListView listView;
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 communicator.respond(position);
+    }
+
+    interface Communicator {
+        void respond(int i);
     }
 }

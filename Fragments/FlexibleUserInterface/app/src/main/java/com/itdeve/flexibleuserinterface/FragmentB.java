@@ -1,10 +1,10 @@
 package com.itdeve.flexibleuserinterface;
 
 
+import android.app.Fragment;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +17,16 @@ import android.widget.TextView;
 public class FragmentB extends Fragment {
 
 TextView text;
+    int id;
+
+    public FragmentB() {
+        // Required empty public constructor
+    }
 
     public void setId(int id) {
         this.id = id;
         changeData(id);
     }
-
-    int id;
-    public FragmentB() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,7 +53,8 @@ TextView text;
     public void  changeData(int i ){
         Resources res = getResources();
         String Desc[] = res.getStringArray(R.array.description);
-
+        if (text == null)
+            text = (TextView) getActivity().findViewById(R.id.TextView);
         text.setText(Desc[i]);
     }
 }
