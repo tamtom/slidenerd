@@ -1,23 +1,43 @@
 package com.itdeve.myswipetab;
 
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 
-public class MainActivity extends AppCompatActivity {
+import com.astuetz.PagerSlidingTabStrip;
+
+public class MainActivity extends AppCompatActivity{
 ViewPager viewPager;
+
+    ActionBar actionBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        viewPager = (ViewPager) findViewById(R.id.my_pager);
-        viewPager.setAdapter(new MuAdapter(getSupportFragmentManager()));
 
+
+
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager.setAdapter(new MuAdapter(getSupportFragmentManager()));
+        final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
+                .getDisplayMetrics());
+        viewPager.setPageMargin(pageMargin);
+        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        tabs.setShouldExpand(true);
+        tabs.setViewPager(viewPager);
     }
+
+
     class MuAdapter extends FragmentPagerAdapter{
+        private String[] titles = {"Item 1", "Item 2", "Item 3" };
 
         public MuAdapter(FragmentManager fm) {
             super(fm);
@@ -48,19 +68,7 @@ ViewPager viewPager;
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-               return "tab1";
-
-
-                case 1:
-                    return  "tab2";
-                    
-                case 2:
-                    return "tab3";
-
-            }
-           return "";
+            return titles[position];
         }
     }
 }
